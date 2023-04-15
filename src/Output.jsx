@@ -17,6 +17,8 @@ const Output = ({ todo, setTodo }) => {
     if (Child.completed) {
       const updatedTodo = todo.filter((item) => item.id !== Child.id);
       setTodo(updatedTodo);
+    }else{
+      handleCheckboxChange(Child.id, Child.checked)
     }
   };
 

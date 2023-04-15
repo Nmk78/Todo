@@ -3,12 +3,14 @@ import React, { useState } from "react";
 const Input = ({ todo, setTodo }) => {
   const [draft, setDraft] = useState("");
 
-  let submitHandler = ({ todo, setTodo }, e) => {
-    console.log(draft);
-    setTodo(draft);
-    console.log(draft);
-    console.log("click");
-  };
+      let submitHandler = ({ todo, setTodo }, e) => {
+      console.log(draft);
+      setTodo(draft);
+      console.log(draft);
+      console.log("click");
+      };
+
+
   return (
     <>
       <form onSubmit={submitHandler}>
