@@ -1,28 +1,36 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 const Output = ({ todo, setTodo }) => {
-  const handleCheckboxChange = (id, check) => {
-    //     console.log('check', check);
-    const updatedTodo = todo.map((item) => {
-      if (item.id === id) {
-        item.completed = !item.completed;
-        //   console.log(item.completed)
-      }
-      return item;
-    });
-    setTodo(updatedTodo);
-  };
+  
+        const handleCheckboxChange = (id, check) => {
+          //     console.log('check', check);
+          const updatedTodo = todo.map((item) => {
+            if (item.id === id) {
+              item.completed = !item.completed;
+              //   console.log(item.completed)
+            }
+            return item;
+          });
+          setTodo(updatedTodo);
+        };
 
-  const handleButtonClick = (Child) => {
-    if (Child.completed) {
-      const updatedTodo = todo.filter((item) => item.id !== Child.id);
-      setTodo(updatedTodo);
-    }else{
-      handleCheckboxChange(Child.id, Child.checked)
-    }
-  };
+        const handleButtonClick = (Child) => {
+          if (Child.completed) {
+            const updatedTodo = todo.filter((item) => item.id !== Child.id);
+            setTodo(updatedTodo);
+          }else{
+            handleCheckboxChange(Child.id, Child.checked)
+          }
+        };
 
+  if(todo.length == 0){
+      return <h2 className="text-2xl text-red-500 m-5">Add more Todo</h2>
+}else{
+  // useEffect(() => {
+  //   return () => {
+      console.log(todo)
   return todo.map((Child) => {
+      
     return (
       <div key={Child.id} className="m-3 w-full flex justify-start">
         <label htmlFor={Child.id} className="text-xl cursor-pointer">
@@ -48,6 +56,10 @@ const Output = ({ todo, setTodo }) => {
       </div>
     );
   });
+  //   }
+  // }, [])
+  
 };
+}
 
 export default Output;
